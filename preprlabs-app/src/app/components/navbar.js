@@ -9,39 +9,63 @@ export default function navbar() {
     return (
     <div className="bg-white">
         {/* Larger Display Navbar */}
-        <div className="hidden lg:block p-5">
-            <div className="flex h-[40px] m-[5px] p-[5px]">
-                <img src="prepr-logo.png" className="w-[100px] h-auto" />
-                <ul className="flex pl-10 mt-auto">
-                    <a href=""><li className="px-5 text-lg text-[#8b8b8b] font-bold hover:text-[#27AE60]">Explore</li></a>
-                    <a href=""><li className="px-5 text-lg text-[#8b8b8b] font-bold hover:text-[#27AE60]">Dashboard</li></a>
-                    <a href=""><li className="px-5 text-lg text-[#8b8b8b] font-bold hover:text-[#27AE60]">My Challenges</li></a>
-                    <a href=""><li className="px-5 text-lg text-[#8b8b8b] font-bold hover:text-[#27AE60]">My Labs</li></a>
-                    <a href=""><li className="px-5 text-lg text-[#8b8b8b] font-bold hover:text-[#27AE60]">My Projects</li></a>
-                    <a href=""><li className="px-5 text-lg text-[#8b8b8b] font-bold hover:text-[#27AE60]">Career Explorer</li></a>
-                </ul>
-                {/* notification bell */}
+        <div className="fixed top-0 w-full bg-white hidden lg:block p-3">
+            <div className="flex w-full h-[50px] m-[5px]">
+                <div className="flex grow">
+                    <img src="prepr-logo.png" />
+                    <ul className="flex grow pl-1 xl:pl-5 my-auto">
+                        <a href="#"><li className="px-2 xl:px-4 text-sm xl:text-lg text-[#8b8b8b] font-bold hover:text-[#27AE60]">Explore</li></a>
+                        <a href="#"><li className="px-2 xl:px-4 text-sm xl:text-lg text-[#8b8b8b] font-bold hover:text-[#27AE60]">Dashboard</li></a>
+                        <a href="#"><li className="px-2 xl:px-4 text-sm xl:text-lg text-[#8b8b8b] font-bold hover:text-[#27AE60]">My Challenges</li></a>
+                        <a href="#"><li className="px-2 xl:px-4 text-sm xl:text-lg text-[#8b8b8b] font-bold hover:text-[#27AE60]">My Labs</li></a>
+                        <a href="#"><li className="px-2 xl:px-4 text-sm xl:text-lg text-[#8b8b8b] font-bold hover:text-[#27AE60]">My Projects</li></a>
+                        <a href="#"><li className="px-2 xl:px-4 text-sm xl:text-lg text-[#8b8b8b] font-bold hover:text-[#27AE60]">Career Explorer</li></a>
+                    </ul>
+                </div>
+                <div className="flex justify-end">
+                    {/* notification bell */}
+                    <div className="my-auto w-[30px] xl:mx-2">
+                        <a href="#"><img src="bell-240.png" className="mx-auto w-[25px] h-auto hover:opacity-80 hover:transition hover:duration-500 hover:ease-in-out"/></a>
+                    </div>
 
-                {/* chat bubble */}
+                    {/* chat bubble */}
+                    <div className="my-auto w-[30px] xl:mx-1">
+                        <a href="#"><img src="speech-bubble-240.png" className="mx-auto w-[25px] h-auto hover:opacity-80 hover:transition hover:duration-500 hover:ease-in-out"/></a>
+                    </div>
 
-                {/* question mark */}
+                    {/* question mark */}
+                    <div className="my-auto w-[30px] xl:mx-1">
+                        <a href="#"><img src="question-mark-240.png" className="mx-auto w-[25px] h-auto hover:opacity-80 hover:transition hover:duration-500 hover:ease-in-out"/></a>
+                    </div>
 
-                {/* search bar */}
+                    {/* search bar */}
+                    <div className="my-auto mx-2 xl:mx-1">
+                        <input type="text" placeholder="Search..." className="pl-3 h-[40px] border focus:outline-none w-[175px] xl:w-full" />
+                    </div>
 
-                {/* profile image  */}
+                    {/* profile image  */}
+                    <div className="flex w-[50px] h-[50px] xl:mx-1">
+                        <input type="image" src="https://wallpapers.com/images/hd/cool-profile-picture-1ecoo30f26bkr14o.jpg" className="border rounded-full w-[50px] h-auto object-contain"/>
+                    </div>
 
-                {/* grid + dropdown  */}
+                    {/* grid + dropdown  */}
+                    <div className="my-auto w-[50px] xl:mx-1">
+                        <a href=""><img src="grid-filled-240.png" className="mx-auto w-[50px] h-auto hover:opacity-80 hover:transition hover:duration-500 hover:ease-in-out"/></a>
+                    </div>
+                </div>
             </div>
         </div>
 
         {/* Smaller Display Navbar */}
-        <div className="lg:hidden p-5 border-b">
+        <div className="fixed top-0 w-full bg-white lg:hidden p-5 border-b">
             <div className="flex justify-between h-[40px]">
-                <img src="prepr-logo.png" className="w-[100px] h-auto" />
+                <img src="prepr-logo.png" />
                 <button className="h-auto" onClick={() => handleToggle()}>
                     {toggle ? <img src="hamburger-240.png" className="w-[40px] h-auto"/> : <img src="x-mark-240.png" className="w-[40px] h-auto"/>}
                 </button>
             </div>
+
+            {/* check if h-full */}
             <div className={toggle ? "fixed w-full inset-x-0 my-5 bg-white transform translate-x-[-100%] transition duration-800 ease-in-out" : "fixed w-full inset-x-0 my-5 bg-white transform translate-x-[0%] transition duration-800 ease-in-out"}>
                 <div className="bg-[#13A859] py-3">
                     <div className="flex justify-center">
