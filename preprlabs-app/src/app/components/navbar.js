@@ -66,7 +66,7 @@ export default function navbar() {
             </div>
 
             {/* check if h-full */}
-            <div className={toggle ? "fixed w-full inset-x-0 my-5 bg-white transform translate-x-[-100%] transition duration-800 ease-in-out" : "fixed w-full inset-x-0 my-5 bg-white transform translate-x-[0%] transition duration-800 ease-in-out"}>
+            <div className={toggle ? "fixed w-full h-full inset-x-0 my-5 bg-white transform translate-x-[-100%] transition duration-800 ease-in-out" : "fixed w-full h-full inset-x-0 my-5 bg-white transform translate-x-[0%] transition duration-800 ease-in-out"}>
                 <div className="bg-[#13A859] py-3">
                     <div className="flex justify-center">
                         <input type="text" className="w-11/12 mx-auto h-[50px] px-10 rounded text-xl placeholder-[#495057] focus:outline-none" placeholder="Search PreprLabs..."/>
