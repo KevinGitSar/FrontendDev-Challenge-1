@@ -2,13 +2,12 @@
 import {useState} from "react";
 
 export default function navbar(props) {
-    
-
     //Menu toggle
     let [toggle, setToggle] = useState(true);
     const handleToggle = () => {
         return setToggle(!toggle);
     }
+
     return (
     <div className="bg-white">
         {/* Larger Display Navbar */}

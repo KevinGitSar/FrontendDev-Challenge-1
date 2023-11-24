@@ -7,6 +7,7 @@ export default function Home() {
     //Light/Dark Mode Toggle
     let [toggleMode, setToggleMode] = useState(false);
     const handleToggleMode = () => {
+        toggleMode ? document.body.classList.remove('dark', 'bg-[#5C5C5C]') : document.body.classList.add('dark', 'bg-[#5C5C5C]')
         return setToggleMode(!toggleMode);
     }
 
@@ -103,7 +104,7 @@ export default function Home() {
     }
 
     return (
-    <div  className={toggleMode ? 'dark bg-[#5C5C5C]' : ""}>
+    <div>
 
         {/* Navbar Component */}
         <Navbar darkMode={toggleMode} toggleDarkMode={handleToggleMode} />
@@ -143,8 +144,7 @@ export default function Home() {
         </div>
 
         {/* Main Tabs */}
-        <div className="dark:bg-[#5C5C5C] dark:h-[75px]"></div>
-        <div className={heroToggle ? 'w-10/12 mx-auto mt-28 mb-5 bg-white border rounded-xl lg:w-11/12 xl:w-3/4 2xl:w-8/12' : 'w-10/12 mx-auto mt-10 mb-5 bg-white border rounded-xl lg:w-11/12 xl:w-3/4 2xl:w-8/12'}>
+        <div className={heroToggle ? 'w-10/12 mx-auto mt-28 mb-5 bg-white border rounded-xl lg:w-11/12 xl:w-3/4 2xl:w-8/12' : 'w-10/12 mx-auto mt-28 mb-5 bg-white border rounded-xl lg:w-11/12 xl:w-3/4 2xl:w-8/12'}>
             <button className={mainTabSwitch == 1 ? 'w-1/4 h-[40px] text-center table-cell align-middle rounded-l-xl font-bold text-lg text-white bg-[#498CCE] dark:bg-[#5C5C5C]' : 'w-1/4 h-[40px] text-center table-cell align-middle rounded-l-xl font-bold text-lg'} onClick={() => mainLabSwitch()}>Labs</button>
             <button className={mainTabSwitch == 2 ? 'w-1/4 h-[40px] text-center table-cell align-middle font-bold text-lg text-white bg-[#498CCE] dark:bg-[#5C5C5C] px-2' : 'w-1/4 h-[40px] text-center table-cell align-middle rounded-l-xl font-bold text-lg px-2'} onClick={() => mainChallengeSwitch()}>Challenges</button>
             <button className={mainTabSwitch == 3 ? 'w-1/4 h-[40px] text-center table-cell align-middle font-bold text-lg text-white bg-[#498CCE] dark:bg-[#5C5C5C] px-2' : 'w-1/4 h-[40px] text-center table-cell align-middle rounded-l-xl font-bold text-lg px-2'} onClick={() => mainResourceSwitch()}>Resources</button>
