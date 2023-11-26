@@ -10,6 +10,9 @@ const LOGIN_URL = '/auth';
 export default function Login() {
     const { setAuth } = useContext(AuthContext);
 
+    const [userFocus, setUserFocus] = useState(false);
+    const [pwdFocus, setPwdFocus] = useState(false);
+
     const userReference = useRef();
     const [errorMsg, setErrorMsg] = useState('');
     const [user, setUser] = useState('');
@@ -80,7 +83,6 @@ export default function Login() {
 
     return (
       <>
-        <script src="https://accounts.google.com/gsi/client" async defer></script>
         {success ? (
           <div>
             <div className='bg-white w-11/12 mt-24 mx-auto my-5 sm:w-8/12 md:w-7/12 lg:w-1/2 xl:w-3/12 2xl:4/12'>
@@ -102,57 +104,64 @@ export default function Login() {
       : 
       (
       <div>
-        
-        {/* Carousel Section ---- Create Component */}
-        <div className='flex flex-col justify-center bg-white w-11/12 h-[300px] mx-auto my-5'>
-          <img src='prepr-logo.png' className='mx-auto'/>
+        <div className='md:flex'>
+          {/* Carousel Section */}
+          <div className='flex flex-col justify-center w-11/12 md:2/12 lg:4/12 2xl:w-4/12 h-[10%] mx-auto my-5'>
+            <img src='splash1.png' className='mx-auto bg-[#ADD489] p-12'/>
+          </div>
+
+          <div className='bg-white md:w-10/12 lg:w-8/12 2xl:w-1/4 md:mt-10 md:mr-10'>
+            {/* Log in Form Section */}
+            <form onSubmit={handleLogin} className='flex flex-col w-full'>
+
+              {/* Logo */}
+              <div className='flex justify-center p-10'>
+                <a href='/explore'><img src='prepr-logo.png' className='h-[60px]' /></a>
+              </div>
+
+              {/* Username */}
+              <div className='flex flex-col relative w-11/12 mx-auto pb-8'>
+                <label htmlFor='username' className={userFocus ? 'absolute -top-1 transition ease-in-out duration-500 -translate-y-4' : 'absolute -top-1 transition ease-in-out duration-500 translate-y-4'}>Username or Email</label>
+                <input type='text' id='username' className='border-x-0 border-t-0 focus:ring-0' ref={userReference} onChange={(e) => setUser(e.target.value)} value={user} onFocus={() => setUserFocus(true)} onBlur={(e) => e.target.value ? '' : setUserFocus(false)} required/>
+              </div>
+
+              {/* Password */}
+              <div className='flex flex-col relative w-11/12 mx-auto pb-4'>
+                <label htmlFor='password' className={pwdFocus ? 'absolute -top-1 transition ease-in-out duration-500 -translate-y-4' : 'absolute -top-1 transition ease-in-out duration-500 translate-y-4'}>Password</label>
+                <input type='password' id='password' className='border-x-0 border-t-0 focus:ring-0' onChange={(e) => setPwd(e.target.value)} value={pwd} onFocus={() => setPwdFocus(true)} onBlur={(e) => e.target.value ? '' : setPwdFocus(false)} required/>
+              </div>
+              
+              <div className='w-11/12 mb-5'>
+                <a href='#0' className='float-right'>
+                  Forgot Password?
+                </a>
+              </div>
+
+              {/* Log in Button */}
+              <div className='flex justify-center w-11/12 h-[40px] mx-auto'>
+                <button type='submit' className='bg-[#FFA841] w-full text-white rounded hover:transition hover:ease-in-out hover:duration-400 hover:shadow-xl shadow-gray-500'>Log in</button>
+              </div>
+
+              <div className='flex justify-center w-11/12 mx-auto my-5'>
+                <p>or</p>
+              </div>
+            </form>
+            
+            {/* Single Sign-On ---- Create Component */}
+            <div className='w-11/12 mx-auto mb-5'>
+              <GoogleLogIn />
+            </div>
+
+            {/* Sign up text/link */}
+            <div className='flex justify-center w-11/12 mx-auto mb- pb-5'>
+              <p>Don't have an account? <a href='/register' className='text-[#27ae60]'>Sign up!</a></p>
+            </div>
+
+            </div>
         </div>
-        {/* <Carousel /> */}
-
-        {/* Log in Form Section */}
-        <form onSubmit={handleLogin} className='flex flex-col bg-[#FFFFFF] w-11/12 mx-auto'>
-
-          {/* Logo */}
-          <div className='flex justify-center p-5'>
-            <img src='prepr-logo.png' className='h-[60px]' />
-          </div>
-
-          {/* Username */}
-          <div className='flex flex-col w-10/12 mx-auto'>
-            <label htmlFor='username'>Username or Email</label>
-            <input type='text' id='username' ref={userReference} onChange={(e) => setUser(e.target.value)} value={user} required/>
-          </div>
-
-          {/* Password */}
-          <div className='flex flex-col w-10/12 mx-auto'>
-            <label htmlFor='password'>Password</label>
-            <input type='password' id='password' onChange={(e) => setPwd(e.target.value)} value={pwd} required/>
-          </div>
-          
-          <div className='w-11/12'>
-            <a href='#0' className='float-right'>
-              Forgot Password?
-            </a>
-          </div>
-
-          {/* Log in Button */}
-          <div className='flex justify-center w-10/12 h-[40px] mx-auto'>
-            <button type='submit' className='bg-[#FFA841] w-full text-white'>Log in</button>
-          </div>
-          <div className='flex justify-center w-10/12 mx-auto'>
-            <p>or</p>
-          </div>
-        </form>
-          {/* Single Sign-On ---- Create Component */}
-          <div className="w-10/12 mx-auto">
-            <GoogleLogIn />
-          </div>
-
-          {/* Sign up text/link */}
-          <div className='flex justify-center w-10/12 mx-auto mb-5'>
-            <p>Don't have an account? <a href='/register'>Sign up!</a></p>
-          </div>
-        <Footer />
+        <div className="fixed left-0 bottom-0 w-full">
+          <Footer />
+        </div>
       </div>
       )};
     </>

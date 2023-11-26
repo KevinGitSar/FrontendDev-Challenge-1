@@ -27,8 +27,9 @@ export default function GoogleLogIn() {
 
     return(
         <>
+            <script src="https://accounts.google.com/gsi/client" async defer></script>
             {error && <p className='text-red'>{error}</p>}
-            {loading ? <div>Loading....</div> : <div id="loginDiv"></div>}
+            {loading ? <div>Loading....</div> : <div id="loginDiv" className='w-1/2 mx-auto'></div>}
         </>
     );
 }
