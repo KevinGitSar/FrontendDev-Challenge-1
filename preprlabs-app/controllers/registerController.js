@@ -8,8 +8,10 @@ const handleNewUser = async (req, res) => {
     }
 
     const duplicate = await User.findOne({username:username}).exec();
+    const emailDuplicate = await User.findOne({email:email}).exec();
 
-    if(duplicate){
+    if(duplicate || emailDuplicate){
+        console.log('Email Duplicate');
         return res.sendStatus(409); //There's conflict
     } 
     
@@ -32,5 +34,6 @@ const handleNewUser = async (req, res) => {
         res.status(500).json({'message':error.message});
     }
 };
+
 
 module.exports = { handleNewUser };

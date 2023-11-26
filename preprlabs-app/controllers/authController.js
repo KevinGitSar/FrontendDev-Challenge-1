@@ -10,37 +10,70 @@ const handleLogin = async (req,res) => {
     };
 
     const foundUser = await User.findOne({username:username}).exec();
-    if(!foundUser){
+    const foundEmail = await User.findOne({email:username}).exec();
+
+    if(foundUser){
+        //Evaluate password
+        const usernameMatch = await bcrypt.compare(password, foundUser.password);
+        if(usernameMatch){
+            // Create JWT
+            const accessToken = jwt.sign(
+                { 'username' : foundUser.username },
+                `${process.env.ACCESS_TOKEN_SECRET}`,
+                { expiresIn: '30s' }
+            );
+    
+            const refreshToken = jwt.sign(
+                { 'username' : foundUser.username },
+                `${process.env.REFRESH_TOKEN_SECTRET}`,
+                { expiresIn: '1d' }
+            );
+            
+            //Saving refreshToken with current user
+            foundUser.refreshToken = refreshToken;
+            const result = await foundUser.save();
+            
+            ///
+            res.cookie('jwt', refreshToken,{ httpOnly: true, maxAge: 24*60*60*1000 });
+            res.json({ accessToken, foundUser });
+        } else {
+            res.sendStatus(401);
+        }
+    } else if(foundEmail){
+        //Evaluate password
+        const emailMatch = await bcrypt.compare(password, foundEmail.password);
+
+        if(emailMatch){
+            // Create JWT
+            const accessToken = jwt.sign(
+                { 'username' : foundEmail.username },
+                `${process.env.ACCESS_TOKEN_SECRET}`,
+                { expiresIn: '30s' }
+            );
+
+            const refreshToken = jwt.sign(
+                { 'username' : foundEmail.username },
+                `${process.env.REFRESH_TOKEN_SECTRET}`,
+                { expiresIn: '1d' }
+            );
+            
+            //Saving refreshToken with current user
+            foundEmail.refreshToken = refreshToken;
+            const result = await foundEmail.save();
+            
+            ///
+            res.cookie('jwt', refreshToken,{ httpOnly: true, maxAge: 24*60*60*1000 });
+            res.json({ accessToken, foundEmail });
+        } else {
+            res.sendStatus(401);
+        }
+    } else {
         return res.status.sendStatus(401); //Unauthorized
     }
 
-    //Evaluate password
-    const match = await bcrypt.compare(password, foundUser.password);
 
-    if(match){
-        // Create JWT
-        const accessToken = jwt.sign(
-            { 'username' : foundUser.username },
-            `${process.env.ACCESS_TOKEN_SECRET}`,
-            { expiresIn: '30s' }
-        );
 
-        const refreshToken = jwt.sign(
-            { 'username' : foundUser.username },
-            `${process.env.REFRESH_TOKEN_SECTRET}`,
-            { expiresIn: '1d' }
-        );
-        
-        //Saving refreshToken with current user
-        foundUser.refreshToken = refreshToken;
-        const result = await foundUser.save();
-        
-        ///
-        res.cookie('jwt', refreshToken,{ httpOnly: true, maxAge: 24*60*60*1000 });
-        res.json({ accessToken });
-    } else {
-        res.sendStatus(401);
-    }
+    
 }
 
 module.exports = { handleLogin };
