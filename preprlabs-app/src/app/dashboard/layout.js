@@ -1,12 +1,12 @@
-import { Inter } from 'next/font/google'
-import '../globals.css'
-import { ReduxProvider } from '@/redux/provider'
+import { Inter } from 'next/font/google';
+import '../globals.css';
+import { ReduxProvider } from '@/redux/provider';
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Projects - PreprLabs Network',
-  description: 'PreprLab\'s Project Creation Page',
+  title: 'Dashboard Page - Prepr Network',
+  description: 'Preprlabs\' Dashboard Page',
 }
 
 export default function RootLayout({ children }) {

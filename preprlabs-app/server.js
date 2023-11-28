@@ -13,7 +13,6 @@ const { OAuth2Client } = require('google-auth-library');
 const jwt = require("jsonwebtoken");
 const GoogleUser = require('./models/GoogleUsers');
 const PORT = process.env.PORT || 3500;
-
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const client = new OAuth2Client(GOOGLE_CLIENT_ID);
 

@@ -16,12 +16,12 @@ export default function navbar(props) {
                 <div className="flex grow">
                     <img src="prepr-logo.png" />
                     <ul className="flex grow pl-1 xl:pl-5 my-auto">
-                        <a href="#"><li className="px-2 xl:px-4 text-sm xl:text-lg text-[#8b8b8b] font-bold hover:text-[#27AE60] dark:text-[#F8F9FA] dark:hover:text-[#27AE60]">Explore</li></a>
-                        <a href="#"><li className="px-2 xl:px-4 text-sm xl:text-lg text-[#8b8b8b] font-bold hover:text-[#27AE60] dark:text-[#F8F9FA] dark:hover:text-[#27AE60]">Dashboard</li></a>
-                        <a href="#"><li className="px-2 xl:px-4 text-sm xl:text-lg text-[#8b8b8b] font-bold hover:text-[#27AE60] dark:text-[#F8F9FA] dark:hover:text-[#27AE60]">My Challenges</li></a>
-                        <a href="#"><li className="px-2 xl:px-4 text-sm xl:text-lg text-[#8b8b8b] font-bold hover:text-[#27AE60] dark:text-[#F8F9FA] dark:hover:text-[#27AE60]">My Labs</li></a>
-                        <a href="#"><li className="px-2 xl:px-4 text-sm xl:text-lg text-[#8b8b8b] font-bold hover:text-[#27AE60] dark:text-[#F8F9FA] dark:hover:text-[#27AE60]">My Projects</li></a>
-                        <a href="#"><li className="px-2 xl:px-4 text-sm xl:text-lg text-[#8b8b8b] font-bold hover:text-[#27AE60] dark:text-[#F8F9FA] dark:hover:text-[#27AE60]">Career Explorer</li></a>
+                        <a href="/explore"><li className="px-2 xl:px-4 text-sm xl:text-lg text-[#8b8b8b] font-bold hover:text-[#27AE60] dark:text-[#F8F9FA] dark:hover:text-[#27AE60]">Explore</li></a>
+                        <a href="/dashboard"><li className="px-2 xl:px-4 text-sm xl:text-lg text-[#8b8b8b] font-bold hover:text-[#27AE60] dark:text-[#F8F9FA] dark:hover:text-[#27AE60]">Dashboard</li></a>
+                        <a href="#0"><li className="px-2 xl:px-4 text-sm xl:text-lg text-[#8b8b8b] font-bold hover:text-[#27AE60] dark:text-[#F8F9FA] dark:hover:text-[#27AE60]">My Challenges</li></a>
+                        <a href="#0"><li className="px-2 xl:px-4 text-sm xl:text-lg text-[#8b8b8b] font-bold hover:text-[#27AE60] dark:text-[#F8F9FA] dark:hover:text-[#27AE60]">My Labs</li></a>
+                        <a href="#0"><li className="px-2 xl:px-4 text-sm xl:text-lg text-[#8b8b8b] font-bold hover:text-[#27AE60] dark:text-[#F8F9FA] dark:hover:text-[#27AE60]">My Projects</li></a>
+                        <a href="#0"><li className="px-2 xl:px-4 text-sm xl:text-lg text-[#8b8b8b] font-bold hover:text-[#27AE60] dark:text-[#F8F9FA] dark:hover:text-[#27AE60]">Career Explorer</li></a>
                     </ul>
                 </div>
                 <div className="flex justify-end">
@@ -97,14 +97,14 @@ export default function navbar(props) {
                 </div>
                 <ul className="dark:bg-[#363535] dark:text-[#F8F9FA]">
                     <a href="/explore"><li className="p-[20px] text-[20px] hover:bg-[#F3F4F8] dark:hover:bg-[#343A40]">Explore</li></a>
-                    <a href=""><li className="p-[20px] text-[20px] hover:bg-[#F3F4F8] dark:hover:bg-[#343A40]">Dashboard</li></a>
-                    <a href="/labs"><li className="p-[20px] text-[20px] hover:bg-[#F3F4F8] dark:hover:bg-[#343A40]">My Labs</li></a>
-                    <a href="/challenges"><li className="p-[20px] text-[20px] hover:bg-[#F3F4F8] dark:hover:bg-[#343A40]">My Challenges</li></a>
-                    <a href="/projects"><li className="p-[20px] text-[20px] hover:bg-[#F3F4F8] dark:hover:bg-[#343A40]">My Projects</li></a>
-                    <a href=""><li className="p-[20px] text-[20px] hover:bg-[#F3F4F8] dark:hover:bg-[#343A40]">Browse</li></a>
-                    <a href=""><li className="p-[20px] text-[20px] hover:bg-[#F3F4F8] dark:hover:bg-[#343A40]">Account</li></a>
-                    <a href=""><li className="p-[20px] text-[20px] hover:bg-[#F3F4F8] dark:hover:bg-[#343A40]">Help Center</li></a>
-                    <a href=""><li className="p-[20px] text-[20px] hover:bg-[#F3F4F8] dark:hover:bg-[#343A40]">Log Out</li></a>
+                    <a href="/dashboard"><li className="p-[20px] text-[20px] hover:bg-[#F3F4F8] dark:hover:bg-[#343A40]">Dashboard</li></a>
+                    <a href="#0"><li className="p-[20px] text-[20px] hover:bg-[#F3F4F8] dark:hover:bg-[#343A40]">My Labs</li></a>
+                    <a href="#0"><li className="p-[20px] text-[20px] hover:bg-[#F3F4F8] dark:hover:bg-[#343A40]">My Challenges</li></a>
+                    <a href="#0"><li className="p-[20px] text-[20px] hover:bg-[#F3F4F8] dark:hover:bg-[#343A40]">My Projects</li></a>
+                    <a href="#0"><li className="p-[20px] text-[20px] hover:bg-[#F3F4F8] dark:hover:bg-[#343A40]">Browse</li></a>
+                    <a href="#0"><li className="p-[20px] text-[20px] hover:bg-[#F3F4F8] dark:hover:bg-[#343A40]">Account</li></a>
+                    <a href="#0"><li className="p-[20px] text-[20px] hover:bg-[#F3F4F8] dark:hover:bg-[#343A40]">Help Center</li></a>
+                    <a href="#0"><li className="p-[20px] text-[20px] hover:bg-[#F3F4F8] dark:hover:bg-[#343A40]">Log Out</li></a>
                 </ul>
             </div>
         </div>
