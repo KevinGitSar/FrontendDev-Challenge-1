@@ -1,6 +1,7 @@
 const User = require('../models/Users');
 const jwt = require('jsonwebtoken');
 
+// Handles the access token of a user.
 const handleRefreshToken = async (req, res) => {
     const cookies = req.cookies;
     if(!cookies?.jwt){ return res.sendStatus(401)};
@@ -9,9 +10,10 @@ const handleRefreshToken = async (req, res) => {
 
     const foundUser = await User.findOne({ refreshToken }).exec();
 
+    // User does not exists
     if(!foundUser) { return res.sendStatus(403);}; //Forbidden
 
-    //evaluate jwt
+    // Evaluate jwt
     jwt.verify(
         refreshToken,
         process.env.REFRESH_TOKEN_SECRET,

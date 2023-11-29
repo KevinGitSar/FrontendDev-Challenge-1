@@ -1,6 +1,6 @@
 
-"use client"; // This is a client componentrequire('dotenv').config();
-import React, { useState, useEffect } from 'react';
+"use client"; // This is a client
+import React, { useEffect } from 'react';
 import useFetch from '../../hooks/useFetch';
 
 export default function GoogleSignUp() {

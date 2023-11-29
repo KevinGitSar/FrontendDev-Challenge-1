@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+// Function to check if user is already logged into their google account.
+// Will ask if they want to use that google account to log in.
 const useFetch = (url) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");

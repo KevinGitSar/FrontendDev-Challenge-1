@@ -1,24 +1,29 @@
 const User = require('../models/Users');
 const bcrypt = require('bcrypt');
 
+
+// Function that handles the creation of a new user.
 const handleNewUser = async (req, res) => {
     const {firstName, lastName, email, username, password, userType, language} = req.body;
     if(!username || !password){
         return res.status(400).json({ 'message': 'username and password are requested'});
     }
 
+    // Checks if username/email already exists exists
     const duplicate = await User.findOne({username:username}).exec();
     const emailDuplicate = await User.findOne({email:email}).exec();
 
+    // If there is a duplicate return status 409 conflict
     if(duplicate || emailDuplicate){
-        console.log('Email Duplicate');
+        // console.log('Email Duplicate');
         return res.sendStatus(409); //There's conflict
     } 
     
+    // No duplicates try to create user.
     try{
-        //encrypt the password
+        // Encrypt the password
         const hashedPwd = await bcrypt.hash(password, 10);
-        //create and store new user
+        // Create and store new user
         const result = await User.create({
             'firstName': firstName,
             'lastName': lastName,

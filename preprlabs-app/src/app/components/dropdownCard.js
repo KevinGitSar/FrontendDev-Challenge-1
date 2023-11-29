@@ -1,10 +1,5 @@
-"use client";
-import { useEffect, useState } from "react";
-
 export default function DropdownCard(props) {
     
-
-
     return (
       <>
           <div className="bg-[#e5e7eb] w-11/12 mx-auto py-10 mb-5 rounded-xl">

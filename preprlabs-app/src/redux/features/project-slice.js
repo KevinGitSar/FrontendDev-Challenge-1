@@ -1,18 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-
-
 const initialState = {
-    title: '',
-    description: '',
-    outsideView: 'outsideViewAllowed',
-    outsideDownload: 'outsideDownloadAllowed',
-    slug: '',
-    challenge: '',
-    lab: '',
-    dropzoneFile: '',
-    recruitStatus: '',
-    leader: '',
+    projects: [],
 }
 export const project = createSlice({
     name: 'project',
@@ -23,19 +12,7 @@ export const project = createSlice({
         },
 
         createProject: (state, action) =>{
-            return {
-                ...state,
-                title: action.payload.title,
-                description: action.payload.description,
-                outsideView: action.payload.outsideView,
-                outsideDownload: action.payload.outsideDownload,
-                slug: action.payload.slug,
-                challenge: action.payload.challenge,
-                lab: action.payload.lab,
-                dropzoneFile: action.payload.dropzoneFile,
-                recruitStatus: action.payload.recruitStatus,
-                leader: action.payload.leader,
-            }
+            return {projects: [...state.projects, action.payload]};
         },
     },
 });

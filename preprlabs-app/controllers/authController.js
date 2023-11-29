@@ -3,17 +3,19 @@ const User = require('../models/Users');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+// Function to handle the user's login.
 const handleLogin = async (req,res) => {
     const { username, password } = req.body;
     if(!username || !password) {
         return res.status(400).json({ 'message' : 'Username and password are required.' });
     };
 
+    // Check whether username or email already exists (users can log in with email too).
     const foundUser = await User.findOne({username:username}).exec();
     const foundEmail = await User.findOne({email:username}).exec();
 
     if(foundUser){
-        //Evaluate password
+        // Evaluate password
         const usernameMatch = await bcrypt.compare(password, foundUser.password);
         if(usernameMatch){
             // Create JWT
@@ -29,18 +31,18 @@ const handleLogin = async (req,res) => {
                 { expiresIn: '1d' }
             );
             
-            //Saving refreshToken with current user
+            // Saving refreshToken with current user
             foundUser.refreshToken = refreshToken;
             const result = await foundUser.save();
             
-            ///
+            
             res.cookie('jwt', refreshToken,{ httpOnly: true, maxAge: 24*60*60*1000 });
             res.json({ accessToken, foundUser });
         } else {
             res.sendStatus(401);
         }
     } else if(foundEmail){
-        //Evaluate password
+        // Evaluate password with email
         const emailMatch = await bcrypt.compare(password, foundEmail.password);
 
         if(emailMatch){
@@ -57,11 +59,10 @@ const handleLogin = async (req,res) => {
                 { expiresIn: '1d' }
             );
             
-            //Saving refreshToken with current user
+            // Saving refreshToken with current user
             foundEmail.refreshToken = refreshToken;
             const result = await foundEmail.save();
             
-            ///
             res.cookie('jwt', refreshToken,{ httpOnly: true, maxAge: 24*60*60*1000 });
             res.json({ accessToken, foundEmail });
         } else {

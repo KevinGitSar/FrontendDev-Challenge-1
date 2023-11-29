@@ -8,7 +8,7 @@ export default function ProjectsCard(props) {
     return (
       <>
           <div className="w-11/12 lg:h-full lg:relative mx-auto bg-white shadow-lg shadow-gray-500/40 border rounded-3xl mt-3">
-              <div>
+              <div className="pb-20">
                     <div className="flex justify-between h-[50px]">
                         <div className="flex flex-col justify-center px-5 pt-5 pb-1">
                             <h2 className="text-xl font-bold text-[#27AE60]">{props.title}</h2>
@@ -27,17 +27,20 @@ export default function ProjectsCard(props) {
                     </div>
 
                     <div className="text-center py-5 lg:min-h-[250px]">
-                        <div className={projectsTab === 1 ? '' : 'hidden'}>
-                            {!props.projectTitle ? 
+                        <div className={projectsTab === 1 ? 'overflow-auto max-h-[250px]' : 'hidden'}>
+                            {!props.projects ? 
                             <p className="font-semibold text-[#727d92]">No Projects found.</p> : 
-
-                            <div className="p-2">
-                                <p className="text-left text-[#27AE60] font-bold">{props.projectTitle}</p>
+                            
+                            // Map out all projects
+                            props.projects &&
+                            props.projects.projects.map((project, index) =>
+                            <div key={project.slug + index} className="p-2">
+                                <p className="text-left text-[#27AE60] font-bold text-xl">{project.title}</p>
                                 <div className="flex">
-                                    <img src={props.projectImage} className="w-[50px]" />
-                                    <p className="text-left pl-1 text-xs">{props.projectDescription}</p>
+                                    <img src={project.dropzoneFile} className="w-1/4" />
+                                    <p className="text-left pl-1 text-sm">{project.description}</p>
                                 </div>
-                            </div>
+                            </div>)
                             }
                         </div>
                         <p className={projectsTab === 2 ? 'font-semibold text-[#727d92]' : 'hidden'}>This area will display project submissions for you to assess in a challenge if you are invited.</p>

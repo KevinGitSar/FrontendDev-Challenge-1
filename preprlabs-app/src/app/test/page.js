@@ -2,6 +2,7 @@ import AccessibilityButton from "../components/accessibilityButton";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 
+// Delete test folder, testing purposes only
 
 export default function test() {
   return (

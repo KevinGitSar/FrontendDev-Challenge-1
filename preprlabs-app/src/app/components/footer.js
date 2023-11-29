@@ -1,4 +1,3 @@
-
 export default function footer() {
     return (
     <div className="flex flex-wrap justify-evenly text-center text-sm bg-white p-5 mt-10 dark:bg-[#363535]">

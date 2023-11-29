@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 
 export default function ScalingCard(props) {
     
+    // Counter functionality
     const [count, setCount] = useState(0);
     const [countText, setCountText] = useState('Default');
 
+    // Keep watch of reset state
     useEffect(()=>{
         if(props.reset){
             setCount(0);
@@ -14,6 +16,7 @@ export default function ScalingCard(props) {
     },[props.reset]);
 
 
+    // Increase button count
     const increaseCount = () => {
         if(count < 200){
             setCount(count + 1);
@@ -25,6 +28,7 @@ export default function ScalingCard(props) {
         
     }
 
+    // Decrease button count
     const decreaseCount = () => {
         if(count > 0){
             setCount(count - 1);
@@ -34,6 +38,7 @@ export default function ScalingCard(props) {
         }
     }
 
+    // Watch count change text based on count
     useEffect(() => {
         if(count == 0){
             setCountText('Default');

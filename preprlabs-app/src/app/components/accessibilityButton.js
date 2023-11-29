@@ -1,28 +1,32 @@
 "use client";
-import { useEffect, useState, useLayoutEffect } from "react";
+import { useEffect, useState } from "react";
 import ScalingCard from "./scalingCard";
 import AdjustmentButton from "./adjustmentButton";
 import ColorCard from "./colorCard";
 import DropdownCard from "./dropdownCard";
 
 
+// Accessbility Button can be imported and used on any page.
+export default function AccessibilityButton() {
 
-export default function AccessibilityButton(props) {
+    // Toggle modal and inner modal
     const [toggle, setToggle] = useState(false);
-
     const [innerToggle, setInnerToggle] = useState(false);
 
+    // Set language button
     const [language, setLanguage] = useState('English');
     const [imageIcon, setImageIcon] = useState('united-states.png');
 
     const [searchBar, setSearchBar] = useState(false);
-    
+
+    // Switch states last 2 switches both on/off together
     const [switchSeizure, setSwitchSeizure] = useState(false);
     const [switchVision, setSwitchVision] = useState(false);
     const [switchADHD, setSwitchADHD] = useState(false);
     const [switchCognitive, setSwitchCognitive] = useState(false);
     const [switchKeyboard, setSwitchKeyboard] = useState(false);
 
+    // Reset the states of all buttons/components
     const [reset, setReset] = useState(false);
     
     useEffect(()=>{
@@ -37,6 +41,7 @@ export default function AccessibilityButton(props) {
         }
     },[reset]);
 
+    // Scale feature, zoom into the website.
     const [scale, setScale] = useState(100);
 
     const increaseScale = () => {
@@ -57,6 +62,7 @@ export default function AccessibilityButton(props) {
     }, [scale]);
 
 
+    // SVG 
     const viewBox = "0 0 1075 1024";
 
     const fontSizeSVG = "M529.034 824.719h132.332l-238.194-625.48H282.021L42.063 824.719h128.801l52.05-142.92h254.073l52.048 142.92zM349.949 334.216l86.455 236.429H263.493l86.455-236.429zm519.642 536.916a52.377 52.377 0 0 1-37.586-15.892L685.716 704.589c-20.152-20.756-19.666-53.919 1.091-74.071s53.919-19.666 74.071 1.091l55.214 56.858V333.301l-55.204 56.88c-20.152 20.76-53.315 21.255-74.076 1.106-20.756-20.149-21.253-53.312-1.106-74.072l144.097-148.464c9.861-10.163 23.419-15.899 37.581-15.9s27.725 5.731 37.591 15.891l146.284 150.651c20.152 20.755 19.666 53.919-1.091 74.073-20.751 20.154-53.919 19.666-74.071-1.089l-55.24-56.888v355.22l55.235-56.909c20.147-20.756 53.309-21.253 74.071-1.106 20.762 20.152 21.253 53.315 1.106 74.071L907.172 855.23a52.368 52.368 0 0 1-37.581 15.903z";
@@ -103,6 +109,7 @@ export default function AccessibilityButton(props) {
 
 
 
+    // Function outer modal toggle
     const modal = (e) =>{
         if(e.target.id == 'modal'){
             setToggle(false);
@@ -110,12 +117,14 @@ export default function AccessibilityButton(props) {
         }
     }
 
+    // Function inner modal toggle
     const innerModal = (e) =>{
         if(e.target.id == 'innerModal'){
             setInnerToggle(false);
         }
     }
     
+    // Function change language and icon
     const changeLanguage = (e) => {
         if(e.target.id && e.target.value){
             setImageIcon(e.target.id + '.png');
@@ -123,6 +132,7 @@ export default function AccessibilityButton(props) {
         }
     }
 
+    // Prevent scroll on modal open.
     useEffect(()=>{
         if(toggle){
             document.body.style.overflow = 'hidden';
@@ -134,11 +144,14 @@ export default function AccessibilityButton(props) {
 
     return (
       <>
+        {/* Accessbility Button */}
         <div className={!toggle ? 'bg-[#27AE60] w-[40px] h-[40px] flex flex-col justify-center rounded-full border border-black fixed translate-y-24 right-5 hover:cursor-pointer' : 'hidden'} onClick={()=> setToggle(true)}>
             <div className="flex justify-center">
                 <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="#FFFFFF" fillRule="evenodd" clipRule="evenodd"><path d="M7 9.866v2.392c-1.221 1.009-2 2.535-2 4.242 0 3.035 2.464 5.5 5.5 5.5 2.256 0 4.197-1.362 5.045-3.308l1.248 1.887c-1.338 2.058-3.658 3.421-6.293 3.421-4.14 0-7.5-3.361-7.5-7.5 0-2.876 1.622-5.376 4-6.634zm10 .134c.552 0 1 .448 1 1s-.448 1-1 1c-1.185 0-3.224.005-4 0 0 2.62 3.641.927 5.274 3.443.726 1.119 1.953 2.998 2.59 4.091.088.151.132.303.136.466.007.352-.174.711-.502.9-.23.132-.933.287-1.366-.366-.67-1.011-1.45-2.211-1.996-3.025-.782-1.166-1.308-1.459-4.136-1.509-2.039-.036-4-.43-4-3v-4c0-.531.21-1.039.586-1.414.375-.376.883-.586 1.414-.586.53 0 1.039.21 1.414.586.375.375.586.883.586 1.414v1h4zm-6-10c1.656 0 3 1.344 3 3s-1.344 3-3 3-3-1.344-3-3 1.344-3 3-3z"/></svg>
             </div>
         </div>
+
+        {/* Outer Modal */}
         <div id="modal" className={toggle ? 'fixed flex justify-center z-10 pt-100 left-0 top-0 w-full h-full' : 'hidden' } onClick={modal}>
             <div className={innerToggle ? 'bg-[#27AE60] fixed translate-y-36 right-5 w-11/12 sm:max-w-screen-sm h-[80vh] rounded-xl overflow-hidden' : 'bg-[#27AE60] fixed translate-y-36 right-5 w-11/12 sm:max-w-screen-sm h-[80vh] rounded-xl overflow-auto scrollbar-thin scrollbar-thumb-[#109326] scrollbar-track-slate-300 scrollbar-rounded-full'}>
 
@@ -150,6 +163,7 @@ export default function AccessibilityButton(props) {
                         <button className="h-[30px] rounded-full focus:outline focus:outline-[#639af9] focus:bg-[#109326] hover:bg-[#109326]" onClick={()=>setInnerToggle(true)}><img src={'flags/' + imageIcon} className="w-[20px] float-left ml-3" />{language}</button>
                     </div>
 
+                    {/* Language Change Section */}
                     <div id="innerModal" className={innerToggle ? 'fixed flex justify-center z-10 pt-100 left-0 top-0 w-full h-full bg-black/30 rounded-xl' : 'hidden'} onClick={innerModal}>
 
                         <div className="bg-white fixed translate-y-36 w-11/12 h-[60vh] rounded-xl overflow-auto scrollbar-thin scrollbar-thumb-[#109326] scrollbar-track-slate-300 scrollbar-rounded-full">
@@ -217,6 +231,8 @@ export default function AccessibilityButton(props) {
                         </div>
                     </div>
                 </div>
+
+                {/* Accessbility Adjustment Section */}
                 <div>
                     <h3 className="text-center text-xl font-semibold text-white">Accessibility Adjustments</h3>
                 </div>
@@ -232,7 +248,7 @@ export default function AccessibilityButton(props) {
                     <input type="text" onFocus={()=> setSearchBar(true)} onBlur={()=> setSearchBar(false)} className={searchBar ? 'rounded-r-full w-full border-0 focus:ring-0 bg-transparent' : 'rounded-r-full w-full border-0 focus:ring-0 bg-transparent text-white placeholder:text-white placeholder:text-sm'} placeholder="Unclear content? Search in dictionary..." />
                 </div>
 
-                {/* Toggle Profile Section (Switches) */}
+                {/* Profile Switch Section */}
                 <div className="w-full bg-[#f2f3f8] mt-10 pb-5">
                     <div className="w-11/12 pb-5 -translate-y-4 lg:h-full mx-auto bg-white shadow-lg shadow-gray-500/40 border rounded-xl mt-3">
                         <h3 className="p-5">Choose the right accessibility profile for you!</h3>
@@ -358,6 +374,7 @@ export default function AccessibilityButton(props) {
                         </ul>
                     </div>
 
+                    {/* Content Adjustment Section */}
                     <div className="w-11/12 pb-5 lg:h-full mx-auto bg-white shadow-lg shadow-gray-500/40 border rounded-xl mt-3">
                         <h3 className="p-5">Content Adjustments</h3>
 
@@ -399,6 +416,7 @@ export default function AccessibilityButton(props) {
 
                     </div>
 
+                    {/* Color Adjustment Section */}
                     <div className="w-11/12 pb-5 lg:h-full mx-auto bg-white shadow-lg shadow-gray-500/40 border rounded-xl mt-3">
                         <h3 className="p-5">Color Adjustments</h3>
 
@@ -436,6 +454,7 @@ export default function AccessibilityButton(props) {
 
                     </div>
 
+                    {/* Orientation Adjustments Section */}
                     <div className="w-11/12 pb-5 lg:h-full mx-auto bg-white shadow-lg shadow-gray-500/40 border rounded-xl mt-3">
                         <h3 className="p-5">Orientation Adjustments</h3>
 

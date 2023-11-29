@@ -9,25 +9,13 @@ import LeaderboardCard from "../components/leaderboardCard";
 import LabsCard from "../components/labsCard";
 import ChallengesCard from "../components/challengesCard";
 import ProjectsCard from "../components/projectsCard";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
-import { cancelProject, createProject } from "@/redux/features/project-slice";
 
 export default function Home() {
     
-    const projectTitle = useSelector((state) => state.projectReducer.title);
-    const projectDescription = useSelector((state) => state.projectReducer.description);
-    const projectImage = useSelector((state) => state.projectReducer.dropzoneFile);
+    const projects = useSelector((state) => state.projectReducer);
 
-    const dispatch = useDispatch();
-    
-    // Reset Redux to initial state
-    // const erase = async (e) => {
-    //     e.preventDefault();
-    //     console.log('clicked');
-        
-    //     dispatch(cancelProject());
-    // }
 
     //Light/Dark Mode Toggle
     let [toggleMode, setToggleMode] = useState(false);
@@ -48,9 +36,6 @@ export default function Home() {
                 <h1 className="font-bold text-2xl md:text-3xl lg:text-4xl">Hello, Kevin!<span className="font-normal text-sm md:text-base lg:text-lg text-[#27AE60] hover:underline hover:underline-off-set-8"><a href="#0"> Complete Profile</a></span></h1>
             </div>
             
-
-            {/* Button to reset redux store to initial state */}
-            {/* <button onClick={erase}>Click ME</button> */}
 
             {/* Cards Section */}
             <div className="bg-white rounded-lg w-11/12 mx-auto my-5 pb-5">
@@ -84,7 +69,7 @@ export default function Home() {
                         <ChallengesCard title={'0 Challenges'} buttonText={'Explore More'} />
                     </div>
                     <div className="py-1 lg:w-1/3">
-                        <ProjectsCard title={'Project(s)'} buttonText={'Explore More'} projectTitle={projectTitle} projectDescription={projectDescription} projectImage={projectImage}/>
+                        <ProjectsCard title={'Project(s)'} buttonText={'Explore More'} projects={projects} />
                     </div>
                 </div>
             </div>
