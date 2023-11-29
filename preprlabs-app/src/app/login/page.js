@@ -52,15 +52,25 @@ export default function Login() {
             withCredentials: true
           }
         );
-        
+        if(response.data.foundUser){
+          setFirstName(response?.data?.foundUser?.firstName);
+          setLastName(response?.data?.foundUser?.lastName);
+          setEmail(response?.data?.foundUser?.email);
+          setUsername(response?.data?.foundUser?.username);
+          setUserType(response?.data?.foundUser?.userType);
+          setLanguage(response?.data?.foundUser?.language);
+        }
+
+        if(response.data.foundEmail){
+          setFirstName(response?.data?.foundEmail?.firstName);
+          setLastName(response?.data?.foundEmail?.lastName);
+          setEmail(response?.data?.foundEmail?.email);
+          setUsername(response?.data?.foundEmail?.username);
+          setUserType(response?.data?.foundEmail?.userType);
+          setLanguage(response?.data?.foundEmail?.language);
+        }
         setUser('');
         setPwd('');
-        setFirstName(response?.data?.foundUser?.firstName);
-        setLastName(response?.data?.foundUser?.lastName);
-        setEmail(response?.data?.foundUser?.email);
-        setUsername(response?.data?.foundUser?.username);
-        setUserType(response?.data?.foundUser?.userType);
-        setLanguage(response?.data?.foundUser?.language);
         setSuccess(true);
         const accessToken = response?.data?.accessToken;
         const roles = response?.data?.roles;

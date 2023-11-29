@@ -250,8 +250,10 @@ export default function Register() {
             </div>
           </div>
         </div>
-      {/* Footer */}
-      <Footer/>
+        {/* Footer */}
+        <div className="fixed left-0 bottom-0 w-full">
+            <Footer />
+          </div>
       </div>
       )}
     </>

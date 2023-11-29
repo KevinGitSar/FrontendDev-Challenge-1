@@ -28,8 +28,8 @@ export default function GoogleSignUp() {
     return(
         <>
             <script src="https://accounts.google.com/gsi/client" async defer></script>
-            {error && alert(error)}
             {loading ? <div>Loading....</div> : <div id="signUpDiv" className='w-1/2 mx-auto'></div>}
+            {error && <p className='text-red-700 text-center mt-5'>{error}</p>}
             
         </>
     );
