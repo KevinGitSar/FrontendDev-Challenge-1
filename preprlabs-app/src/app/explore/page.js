@@ -1,7 +1,8 @@
 "use client"; // This is a client component
 import {useState} from "react";
-import Navbar from "../components/navbar"
-import Footer from "../components/footer"
+import Navbar from "../components/navbar";
+import Footer from "../components/footer";
+import AccessibilityButton from "../components/accessibilityButton";
 
 export default function Home() {
     //Light/Dark Mode Toggle
@@ -108,7 +109,7 @@ export default function Home() {
 
         {/* Navbar Component */}
         <Navbar darkMode={toggleMode} toggleDarkMode={handleToggleMode} />
-
+        <AccessibilityButton />
         {/* Hero Section */}
         <div className={heroToggle ? 'mt-20 p-5 bg-gradient-to-r from-[#D5FFC6] to-[#7BD1F2] text-center dark:text-[#F8F9FA] dark:bg-gradient-to-r dark:from-[#5C5C5C] dark:to-[#212529] ' : 'hidden'}>
         
