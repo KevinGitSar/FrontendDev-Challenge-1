@@ -34,3 +34,29 @@ The Front End Developer Challenge is an individual project focused on front end 
 ## Run Local Development
 
 ```npm run dev```
+
+## Development Tools
+
+<img src="https://github.com/KevinGitSar/FrontendDev-Challenge-1/assets/74475291/dd3cd57d-e429-4daf-bff8-6e897b8d586b" alt="react" width="50">
+
+[React.js](https://reactjs.org/)
+<br />
+<br />
+
+<img src="https://github.com/KevinGitSar/FrontendDev-Challenge-1/assets/74475291/4970fe23-0de9-495c-a093-88f92b1e9b96" alt="mongodb" width="50">
+
+[MongoDB](https://www.mongodb.com/)
+<br />
+<br />
+
+<img src="https://github.com/KevinGitSar/FrontendDev-Challenge-1/assets/74475291/f4d1da35-528f-4b07-8bd4-2146cd2ddc94" alt="redux" width="50">
+
+[Redux](https://redux.js.org/)
+<br />
+<br />
+
+<img src="https://github.com/KevinGitSar/FrontendDev-Challenge-1/assets/74475291/89c4a89d-51ba-4bf5-999b-6ae81926c20c" alt="tailwindcss" width="50">
+
+[Tailwind CSS](https://tailwindcss.com/)
+<br />
+<br />
