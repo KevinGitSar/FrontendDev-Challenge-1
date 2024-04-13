@@ -173,7 +173,7 @@ export default function Login() {
           <Footer />
         </div>
       </div>
-      )};
+      )}
     </>
   )
 }
